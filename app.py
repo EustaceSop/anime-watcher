@@ -20,12 +20,12 @@ def index():
     
     return render_template('index.html', anime_data=anime_data)
 
-# 封面圖路由
+# 封面圖
 @app.route('/anime/<folder>/cover.jpg')
 def serve_cover(folder):
     return send_from_directory(os.path.join(ANIME_FOLDER, folder), 'cover.jpg')
 
-# 集數list頁面
+# 集數頁面
 @app.route('/anime/<folder>')
 def show_episodes(folder):
     folder_path = os.path.join(ANIME_FOLDER, folder)
@@ -37,7 +37,6 @@ def show_episodes(folder):
     
     return render_template('episodes.html', folder=folder, episodes=episodes)
 
-# 觀看影片
 @app.route('/anime/<folder>/<episode>')
 def watch_episode(folder, episode):
     folder_path = os.path.join(ANIME_FOLDER, folder)
@@ -64,7 +63,7 @@ def serve_video(folder, episode):
     folder_path = os.path.join(ANIME_FOLDER, folder)
     return send_from_directory(folder_path, episode)
 
-# 搜尋ㄉ功能
+# 搜尋功能
 @app.route('/search')
 def search():
     query = request.args.get('q', '')
@@ -76,4 +75,5 @@ def search():
     return render_template('search_results.html', query=query, results=results)
 
 if __name__ == "__main__":
+
     app.run(host='0.0.0.0', port=5000, debug=True)
