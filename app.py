@@ -46,7 +46,7 @@ def watch_episode(folder, episode):
         def generate():
             with open(episode_path, 'rb') as f:
                 while True:
-                    chunk = f.read(4096)  # 怕iPhone用戶的瀏覽器爆炸 fixed by ice.0range
+                    chunk = f.read(4096)  # 怕iPhone用戶的瀏覽器爆炸 fixed by IceOrange
                     if not chunk:
                         break
                     yield chunk
@@ -77,4 +77,5 @@ def search():
 if __name__ == "__main__":
 
     app.run(host='0.0.0.0', port=5000, debug=True)
+
 
